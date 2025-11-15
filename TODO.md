@@ -30,11 +30,17 @@
   - [x] Alert boxes - AlertBox.vue
   - [x] Page layout wrapper - CalcLayout.vue
 
-### 1.3 Data Model & State Management ✅ MOSTLY COMPLETE
+### 1.3 Data Model & State Management ✅ COMPLETED
 - [x] Design calculator data structure schema (TypeScript interfaces in types/calculator.ts)
 - [x] Implement state management (Pinia store with localStorage persistence)
 - [x] Create import/export functionality for calibration profiles (in calculatorStore.ts)
-- [ ] Design user profile system (save multiple printer/filament configs) - Deferred to Phase 2
+- [x] Design user profile system (save multiple printer/filament configs) ✅ **COMPLETED**
+  - [x] Type definitions (PrinterProfile, FilamentProfile, UserProfile)
+  - [x] Profile store with full CRUD operations
+  - [x] Profile management UI page
+  - [x] Printer and filament form dialogs
+  - [x] Import/export functionality
+  - [x] Active profile selection
 
 ---
 
@@ -452,7 +458,7 @@
 - **Type Safety**: TypeScript with strict mode enabled
 - **State Management**: Pinia installed and ready for use
 
-### 🚀 Calculators Migrated (16/19)
+### 🚀 Calculators Migrated (17/19)
 1. ✅ Home Page
 2. ✅ Basic Configuration Checks
 3. ✅ Stepper Run Current
@@ -469,14 +475,17 @@
 14. ✅ Input Shaping
 15. ✅ Line Width Recommendations
 16. ✅ Extrusion Rate Smoothing
+17. ✅ **Profiles Manager** (NEW!)
 
 ### ⏳ Remaining Tasks (Phase 2+)
 - [ ] Skew Correction calculator
 - [ ] Temperature tower calculators
 - [ ] Retraction tuning calculator
+- [ ] Integrate profile data with calculators (auto-populate from active printer/filament)
 - [x] ~~Implement Pinia stores for shared state~~ ✅ Complete
 - [x] ~~Add localStorage persistence~~ ✅ Complete
 - [x] ~~Production deployment setup~~ ✅ Complete (see DEPLOYMENT.md)
+- [x] ~~User profile system~~ ✅ Complete (see above)
 
 ---
 

@@ -1,93 +1,68 @@
 <template>
-  <CalcLayout title="Stepper Run Current">
+  <CalcLayout title="Stepper Run Current (TMC2208/2209)">
     <template #info>
       <AlertBox type="info">
-        <p class="font-semibold mb-2">Purpose</p>
+        <p class="font-semibold mb-2">Calculate RMS Run Current</p>
         <p>
-          Verify that your stepper motor run_current settings are appropriate by checking 
-          motor temperatures under load.
+          Convert motor peak current rating to RMS run_current value for Klipper configuration.
         </p>
       </AlertBox>
     </template>
 
-    <CalcCard title="Instructions">
-      <div class="prose-custom space-y-4">
-        <ol class="list-decimal list-inside space-y-2">
-          <li>Heat your printer and run a print for at least 10 minutes</li>
-          <li>Immediately after, carefully touch the stepper motors</li>
-          <li>Note their temperature (too hot to touch comfortably = ~70°C+)</li>
-          <li>Enter your current run_current setting and estimated temperature below</li>
-        </ol>
-
-        <AlertBox type="warning">
-          <p class="font-semibold">Target Temperature Range</p>
-          <p>Stepper motors should be warm (40-70°C) but not too hot to touch comfortably.</p>
-        </AlertBox>
-      </div>
-    </CalcCard>
-
-    <CalcCard title="Calculate New Run Current">
+    <CalcCard title="Calculator">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Inputs -->
+        <!-- Input -->
         <div class="space-y-4">
           <CalcInput
-            v-model="currentSetting"
-            label="Current run_current Setting"
+            v-model="peakCurrent"
+            label="Motor Peak Current"
             unit="A"
-            :step="0.01"
+            :step="0.1"
             :min="0.1"
-            :max="2.0"
-            hint="Check your printer.cfg for current run_current value"
-          />
-
-          <CalcInput
-            v-model="tempReading"
-            label="Estimated Motor Temperature"
-            unit="°C"
-            :step="1"
-            :min="20"
-            :max="100"
-            hint="Estimate: too hot to touch = 70°C+, warm = 40-70°C"
+            :max="3.0"
+            hint="Check your motor's datasheet for peak current rating"
           />
         </div>
 
         <!-- Results -->
         <div class="space-y-4">
           <CalcResult
-            :value="newRunCurrent"
-            label="New run_current Value"
+            :value="result"
+            label="Calculated run_current"
             unit="A"
             :decimals="3"
             :copyable="true"
           />
 
-          <AlertBox 
-            :type="tempReading < 40 ? 'warning' : tempReading > 70 ? 'error' : 'success'"
-          >
-            <p class="font-semibold">{{ statusMessage }}</p>
-            <p class="text-sm mt-1">{{ recommendationMessage }}</p>
+          <AlertBox type="warning">
+            <p class="font-semibold">Safety Margin</p>
+            <p class="text-sm">
+              It's recommended to use 75-85% of this calculated value to reduce heat and noise.
+              Adjust based on your motor and driver specifications.
+            </p>
           </AlertBox>
 
           <CommandBlock
-            v-if="showCommand"
-            label="Add to printer.cfg"
-            :command="`run_current: ${newRunCurrent.toFixed(3)}`"
+            v-if="result"
+            label="Add to printer.cfg [tmc2209 stepper_x]"
+            :command="`run_current: ${result.toFixed(3)}`"
           />
         </div>
       </div>
     </CalcCard>
 
-    <CalcCard title="Reference">
-      <div class="prose-custom">
+    <CalcCard title="Formula & Reference">
+      <div class="prose-custom space-y-2">
+        <p><strong>Formula:</strong> RMS = Peak Current / √2 (or Peak Current × 0.707)</p>
         <p>
-          This calculator is based on the 
+          Reference: 
           <a 
-            href="https://ellis3dp.com/Print-Tuning-Guide/articles/determining_motor_currents.html"
+            href="https://docs.vorondesign.com/community/howto/120decibell/calculating_driver_current.html"
             target="_blank"
             rel="noopener"
           >
-            Ellis3DP guide for determining motor currents
-          </a>.
+            Voron Design - Calculating Driver Current
+          </a>
         </p>
       </div>
     </CalcCard>
@@ -102,34 +77,12 @@ import CalcInput from '../CalcInput.vue'
 import CalcResult from '../CalcResult.vue'
 import AlertBox from '../AlertBox.vue'
 import CommandBlock from '../CommandBlock.vue'
-import { calculateRunCurrent } from '../../utils/calculations'
+import { calculateRMSCurrent } from '../../utils/calculations'
 
-const currentSetting = ref(0.8)
-const tempReading = ref(50)
+const peakCurrent = ref<number | undefined>(undefined)
 
-const newRunCurrent = computed(() => {
-  return calculateRunCurrent(currentSetting.value, tempReading.value)
-})
-
-const showCommand = computed(() => {
-  return currentSetting.value > 0 && tempReading.value > 0
-})
-
-const statusMessage = computed(() => {
-  if (tempReading.value < 40) {
-    return 'Motors Too Cool'
-  } else if (tempReading.value > 70) {
-    return 'Motors Too Hot'
-  }
-  return 'Temperature OK'
-})
-
-const recommendationMessage = computed(() => {
-  if (tempReading.value < 40) {
-    return 'Your motors are cooler than ideal. Consider increasing run_current slightly.'
-  } else if (tempReading.value > 70) {
-    return 'Your motors are too hot! Reduce run_current to prevent damage and skipping.'
-  }
-  return 'Your motor temperature is in the ideal range. Current settings are good!'
+const result = computed(() => {
+  if (!peakCurrent.value) return undefined
+  return calculateRMSCurrent(peakCurrent.value)
 })
 </script>

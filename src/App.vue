@@ -35,6 +35,7 @@ import BeltRotationPage from './components/pages/BeltRotationPage.vue'
 import ProbeOffsetPage from './components/pages/ProbeOffsetPage.vue'
 import MaxSpeedPage from './components/pages/MaxSpeedPage.vue'
 import LineWidthsPage from './components/pages/LineWidthsPage.vue'
+import ProfilesPage from './components/pages/ProfilesPage.vue'
 import { useCalculatorStore } from './stores/calculatorStore'
 
 const store = useCalculatorStore()
@@ -57,6 +58,7 @@ const pages = {
   probe_offset: ProbeOffsetPage,
   max_speed: MaxSpeedPage,
   linewidth: LineWidthsPage,
+  profiles: ProfilesPage,
 }
 
 const activePage = ref(store.lastVisitedPage || 'home')

@@ -145,6 +145,18 @@
       >
         <i class="ph ph-pen-nib"></i> Line Widths
       </a>
+
+      <!-- Settings Section -->
+      <p class="text-xs font-medium text-gray-500 uppercase px-3 pt-4 pb-1">
+        Settings
+      </p>
+      <a
+        href="#profiles"
+        :class="linkClass('profiles')"
+        @click.prevent="navigate('profiles')"
+      >
+        <i class="ph ph-user-gear"></i> Profiles
+      </a>
     </nav>
     
     <!-- Footer Credits -->
