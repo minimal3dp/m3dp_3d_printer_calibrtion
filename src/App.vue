@@ -28,11 +28,17 @@ import FlowWallPage from './components/pages/FlowWallPage.vue'
 import VolumetricOrcaPage from './components/pages/VolumetricOrcaPage.vue'
 import VolumetricEllisPage from './components/pages/VolumetricEllisPage.vue'
 import PressureAdvancePage from './components/pages/PressureAdvancePage.vue'
+import MarlinLinearAdvancePage from './components/pages/MarlinLinearAdvancePage.vue'
 import InputShapingPage from './components/pages/InputShapingPage.vue'
+import AccelerationTowerPage from './components/pages/AccelerationTowerPage.vue'
+import TemperatureTowerPage from './components/pages/TemperatureTowerPage.vue'
+import TemperatureTowerEllisPage from './components/pages/TemperatureTowerEllisPage.vue'
+import PIDTuningPage from './components/pages/PIDTuningPage.vue'
 import ExtrusionSmoothingPage from './components/pages/ExtrusionSmoothingPage.vue'
 import LeadScrewPage from './components/pages/LeadScrewPage.vue'
 import BeltRotationPage from './components/pages/BeltRotationPage.vue'
 import ProbeOffsetPage from './components/pages/ProbeOffsetPage.vue'
+import SkewCorrectionPage from './components/pages/SkewCorrectionPage.vue'
 import MaxSpeedPage from './components/pages/MaxSpeedPage.vue'
 import LineWidthsPage from './components/pages/LineWidthsPage.vue'
 import ProfilesPage from './components/pages/ProfilesPage.vue'
@@ -51,11 +57,17 @@ const pages = {
   volumetric_orca: VolumetricOrcaPage,
   volumetric_ellis: VolumetricEllisPage,
   pa: PressureAdvancePage,
+  marlin_la: MarlinLinearAdvancePage,
   shaping: InputShapingPage,
+  acceleration: AccelerationTowerPage,
+  temp_tower: TemperatureTowerPage,
+  temp_tower_ellis: TemperatureTowerEllisPage,
+  pid_tuning: PIDTuningPage,
   ers: ExtrusionSmoothingPage,
   leadscrew: LeadScrewPage,
   belt_rotation: BeltRotationPage,
   probe_offset: ProbeOffsetPage,
+  skew: SkewCorrectionPage,
   max_speed: MaxSpeedPage,
   linewidth: LineWidthsPage,
   profiles: ProfilesPage,

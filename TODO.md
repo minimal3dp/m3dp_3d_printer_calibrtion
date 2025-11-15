@@ -61,14 +61,18 @@
 - [x] ~~Add filament-specific flow presets (PLA, PETG, ABS, TPU, etc.)~~ ✅ **7 materials with presets**
 - [x] ~~Include temperature vs flow rate charts~~ ✅ **Comprehensive temp/flow table**
 
-### 2.3 Pressure Advance / Linear Advance
-- [x] ~~Klipper PA (Direct Drive & Bowden)~~ ✅ **Migrated to Vue (PressureAdvancePage.vue)**
-- [x] ~~OrcaSlicer PA Tower~~ ✅ **Migrated to Vue**
-- [x] ~~Adaptive PA Calculator~~ ✅ **Migrated to Vue**
-- [ ] Add Marlin Linear Advance (K-factor) calculator
-- [ ] Implement RepRapFirmware pressure advance
-- [ ] Create PA validation test generator
-- [ ] Add troubleshooting guide for PA artifacts
+### 2.3 Pressure Advance / Linear Advance ✅ COMPLETED
+- [x] **Klipper Pressure Advance**: Fully migrated to `PressureAdvancePage.vue`.
+    - [x] Tower method for Direct Drive & Bowden extruders.
+    - [x] OrcaSlicer PA Tower test integration.
+    - [x] Adaptive PA calculation method.
+- [x] **Marlin Linear Advance**: Add a new calculator for K-factor tuning.
+    - [x] Create `MarlinLinearAdvancePage.vue`.
+    - [x] Implement g-code generator for the test pattern.
+    - [x] Add visual guide for interpreting results.
+- [x] **RepRapFirmware Pressure Advance**: Implement support for RRF.
+- [x] **PA Validation**: Create a test print generator to validate PA/LA settings.
+- [x] **Troubleshooting**: Add a guide for common artifacts like bulging corners or seams.
 
 ### 2.4 Volumetric Flow Rate
 - [x] ~~Max Volumetric Speed (OrcaSlicer method)~~ ✅ **Migrated to Vue (VolumetricOrcaPage.vue)**
@@ -80,7 +84,7 @@
 
 ### 2.5 Speed & Acceleration
 - [x] ~~Max Print Speed Calculator~~ ✅ **Migrated to Vue (MaxSpeedPage.vue)**
-- [ ] Add TeachingTech acceleration tower calculator
+- [x] ~~Add TeachingTech acceleration tower calculator~~ ✅ **Migrated to Vue (AccelerationTowerPage.vue)**
 - [ ] Implement junction deviation calculator
 - [ ] Create square corner velocity (SCV) calculator
 - [ ] Add acceleration limit recommendations per filament type
@@ -93,9 +97,9 @@
 - [ ] Add belt tension recommendations
 
 ### 2.7 Temperature Calibration
-- [ ] Temperature tower calculator (TeachingTech method)
-- [ ] Temperature tower calculator (Ellis' method)
-- [ ] PID tuning guide and results validator
+- [x] ~~Temperature tower calculator (TeachingTech method)~~ ✅ **Migrated to Vue (TemperatureTowerPage.vue)**
+- [x] ~~Temperature tower calculator (Ellis' method)~~ ✅ **Migrated to Vue (TemperatureTowerEllisPage.vue)**
+- [x] ~~PID tuning guide and results validator~~ ✅ **Migrated to Vue (PIDTuningPage.vue)**
 - [ ] Material temperature database (community-contributed)
 - [ ] Bed temperature calibration for adhesion
 
@@ -110,7 +114,7 @@
 - [x] ~~Lead Screw Rotation Distance~~ ✅ **Migrated to Vue (LeadScrewPage.vue)**
 - [x] ~~Belt Rotation Distance~~ ✅ **Migrated to Vue (BeltRotationPage.vue)**
 - [x] ~~Probe XY Offset~~ ✅ **Migrated to Vue (ProbeOffsetPage.vue)**
-- [ ] ~~Skew Correction~~ (TODO: Create SkewCorrectionPage.vue)
+- [x] ~~Skew Correction~~ ✅ **Migrated to Vue (SkewCorrectionPage.vue)**
 - [x] ~~Stepper Run Current (TMC drivers)~~ ✅ **Migrated to Vue (RunCurrentPage.vue)**
 - [ ] Z-offset calibration wizard
 - [ ] First layer calibration (live adjust guide)
@@ -450,14 +454,14 @@
 
 ### ✅ Completed
 - **Vue 3 Application**: Modern SPA with hot reload, TypeScript, Tailwind CSS
-- **16 Calculator Pages Migrated**: All core calculators from index.html now in Vue components
+- **22 Calculator Pages Migrated**: All core calculators from index.html now in Vue components
 - **Component Library**: 7 reusable components (CalcLayout, CalcInput, CalcResult, etc.)
 - **Development Server**: Running at localhost:3000 with live reload
 - **Build System**: Vite with optimized production builds
 - **Type Safety**: TypeScript with strict mode enabled
 - **State Management**: Pinia installed and ready for use
 
-### 🚀 Calculators Migrated (17/19)
+### 🚀 Calculators Migrated (22/22)
 1. ✅ Home Page
 2. ✅ Basic Configuration Checks
 3. ✅ Stepper Run Current
@@ -475,11 +479,20 @@
 15. ✅ Line Width Recommendations
 16. ✅ Extrusion Rate Smoothing
 17. ✅ **Profiles Manager** (NEW!)
+18. ✅ **Skew Correction** (NEW!)
+19. ✅ **Acceleration Tower** (NEW!)
+20. ✅ **Temperature Tower** (NEW!)
+21. ✅ **Temperature Tower (Ellis)** (NEW!)
+22. ✅ **PID Tuning Guide** (NEW!)
 
 ### ⏳ Remaining Tasks (Phase 2+)
-- [ ] Skew Correction calculator
-- [ ] Temperature tower calculators
-- [ ] Retraction tuning calculator
+- [ ] Material temperature database (community-contributed)
+- [ ] Bed temperature calibration for adhesion
+- [ ] Retraction tower calculator
+- [ ] Z-hop calculator
+- [ ] Firmware retraction vs slicer retraction comparison
+- [ ] Wipe distance calculator
+- [ ] Retraction speed optimizer
 - [ ] Integrate profile data with calculators (auto-populate from active printer/filament)
 - [x] ~~Implement Pinia stores for shared state~~ ✅ Complete
 - [x] ~~Add localStorage persistence~~ ✅ Complete
@@ -500,7 +513,7 @@
 
 ### What Was Built:
 - ✅ Modern Vue 3 + TypeScript SPA
-- ✅ 16 fully functional calculator pages
+- ✅ 22 fully functional calculator pages
 - ✅ 7 reusable component library
 - ✅ Pinia state management with localStorage
 - ✅ Production build system (Vite)
@@ -519,7 +532,7 @@
 
 ### Next Phase:
 **Milestone 2: Enhanced Features** (Target: 8-12 weeks)
-- Add remaining calculators (temperature, retraction, skew)
+- Add remaining calculators (retraction, skew)
 - OrcaSlicer profile generator
 - Enhanced documentation and guides
 - Community features

@@ -87,11 +87,46 @@
         <i class="ph ph-corners-out"></i> Pressure Advance
       </a>
       <a
+        href="#marlin_la"
+        :class="linkClass('marlin_la')"
+        @click.prevent="navigate('marlin_la')"
+      >
+        <i class="ph ph-chart-line-up"></i> Marlin Linear Advance
+      </a>
+      <a
         href="#shaping"
         :class="linkClass('shaping')"
         @click.prevent="navigate('shaping')"
       >
         <i class="ph ph-waveform"></i> Input Shaping
+      </a>
+      <a
+        href="#acceleration"
+        :class="linkClass('acceleration')"
+        @click.prevent="navigate('acceleration')"
+      >
+        <i class="ph ph-rocket"></i> Acceleration Tower
+      </a>
+      <a
+        href="#temp_tower"
+        :class="linkClass('temp_tower')"
+        @click.prevent="navigate('temp_tower')"
+      >
+        <i class="ph ph-thermometer-simple"></i> Temperature Tower
+      </a>
+      <a
+        href="#temp_tower_ellis"
+        :class="linkClass('temp_tower_ellis')"
+        @click.prevent="navigate('temp_tower_ellis')"
+      >
+        <i class="ph ph-thermometer-simple"></i> Temperature Tower (Ellis)
+      </a>
+      <a
+        href="#pid_tuning"
+        :class="linkClass('pid_tuning')"
+        @click.prevent="navigate('pid_tuning')"
+      >
+        <i class="ph ph-graph"></i> PID Tuning
       </a>
       <a
         href="#ers"
@@ -125,6 +160,13 @@
         @click.prevent="navigate('probe_offset')"
       >
         <i class="ph ph-crosshair"></i> Probe XY Offset
+      </a>
+      <a
+        href="#skew"
+        :class="linkClass('skew')"
+        @click.prevent="navigate('skew')"
+      >
+        <i class="ph ph-square-half"></i> Skew Correction
       </a>
 
       <!-- Slicer Settings Section -->
