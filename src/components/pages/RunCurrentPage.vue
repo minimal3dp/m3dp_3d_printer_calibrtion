@@ -1,14 +1,8 @@
 <template>
-  <CalcLayout title="Stepper Run Current (TMC2208/2209)">
-    <template #info>
-      <AlertBox type="info">
-        <p class="font-semibold mb-2">Calculate RMS Run Current</p>
-        <p>
-          Convert motor peak current rating to RMS run_current value for Klipper configuration.
-        </p>
-      </AlertBox>
-    </template>
-
+  <CalcLayout 
+    title="Stepper Run Current (TMC2208/2209)"
+    description="This calculator helps you determine the correct 'run_current' for your stepper motors based on their peak current rating. Setting this value correctly is crucial for preventing motor overheating and ensuring reliable performance.">
+    
     <CalcCard title="Calculator">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Input -->

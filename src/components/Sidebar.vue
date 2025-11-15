@@ -74,6 +74,13 @@
       >
         <i class="ph ph-thermometer-hot"></i> Max Volumetric (Ellis)
       </a>
+       <a
+        href="#volumetric_flow"
+        :class="linkClass('volumetric_flow')"
+        @click.prevent="navigate('volumetric_flow')"
+      >
+        <i class="ph ph-activity"></i> Volumetric Flow
+      </a>
 
       <!-- Tuning Section -->
       <p class="text-xs font-medium text-gray-500 uppercase px-3 pt-4 pb-1">
@@ -85,13 +92,6 @@
         @click.prevent="navigate('pa')"
       >
         <i class="ph ph-corners-out"></i> Pressure Advance
-      </a>
-      <a
-        href="#marlin_la"
-        :class="linkClass('marlin_la')"
-        @click.prevent="navigate('marlin_la')"
-      >
-        <i class="ph ph-chart-line-up"></i> Marlin Linear Advance
       </a>
       <a
         href="#shaping"
@@ -167,6 +167,27 @@
         @click.prevent="navigate('skew')"
       >
         <i class="ph ph-square-half"></i> Skew Correction
+      </a>
+      <a
+        href="#stepper_direction"
+        :class="linkClass('stepper_direction')"
+        @click.prevent="navigate('stepper_direction')"
+      >
+        <i class="ph ph-compass"></i> Stepper Direction
+      </a>
+      <a
+        href="#endstop_testing"
+        :class="linkClass('endstop_testing')"
+        @click.prevent="navigate('endstop_testing')"
+      >
+        <i class="ph ph-plugs"></i> Endstop Testing
+      </a>
+      <a
+        href="#z_offset"
+        :class="linkClass('z_offset')"
+        @click.prevent="navigate('z_offset')"
+      >
+        <i class="ph ph-arrow-down"></i> Z-Offset Calibration
       </a>
 
       <!-- Slicer Settings Section -->

@@ -28,7 +28,6 @@ import FlowWallPage from './components/pages/FlowWallPage.vue'
 import VolumetricOrcaPage from './components/pages/VolumetricOrcaPage.vue'
 import VolumetricEllisPage from './components/pages/VolumetricEllisPage.vue'
 import PressureAdvancePage from './components/pages/PressureAdvancePage.vue'
-import MarlinLinearAdvancePage from './components/pages/MarlinLinearAdvancePage.vue'
 import InputShapingPage from './components/pages/InputShapingPage.vue'
 import AccelerationTowerPage from './components/pages/AccelerationTowerPage.vue'
 import TemperatureTowerPage from './components/pages/TemperatureTowerPage.vue'
@@ -39,12 +38,16 @@ import LeadScrewPage from './components/pages/LeadScrewPage.vue'
 import BeltRotationPage from './components/pages/BeltRotationPage.vue'
 import ProbeOffsetPage from './components/pages/ProbeOffsetPage.vue'
 import SkewCorrectionPage from './components/pages/SkewCorrectionPage.vue'
+import StepperDirectionPage from './components/pages/StepperDirectionPage.vue'
+import EndstopTestingPage from './components/pages/EndstopTestingPage.vue'
+import ZOffsetCalibrationPage from './components/pages/ZOffsetCalibrationPage.vue'
 import MaxSpeedPage from './components/pages/MaxSpeedPage.vue'
 import LineWidthsPage from './components/pages/LineWidthsPage.vue'
 import ProfilesPage from './components/pages/ProfilesPage.vue'
-import { useCalculatorStore } from './stores/calculatorStore'
+import VolumetricFlowPage from './components/pages/VolumetricFlowPage.vue'
+import { useKlipperTuningGuideStore } from './stores/klipperTuningGuide'
 
-const store = useCalculatorStore()
+const store = useKlipperTuningGuideStore()
 
 // Page registry - all calculator components
 const pages = {
@@ -56,8 +59,8 @@ const pages = {
   flow_wall: FlowWallPage,
   volumetric_orca: VolumetricOrcaPage,
   volumetric_ellis: VolumetricEllisPage,
+  volumetric_flow: VolumetricFlowPage,
   pa: PressureAdvancePage,
-  marlin_la: MarlinLinearAdvancePage,
   shaping: InputShapingPage,
   acceleration: AccelerationTowerPage,
   temp_tower: TemperatureTowerPage,
@@ -68,6 +71,9 @@ const pages = {
   belt_rotation: BeltRotationPage,
   probe_offset: ProbeOffsetPage,
   skew: SkewCorrectionPage,
+  stepper_direction: StepperDirectionPage,
+  endstop_testing: EndstopTestingPage,
+  z_offset: ZOffsetCalibrationPage,
   max_speed: MaxSpeedPage,
   linewidth: LineWidthsPage,
   profiles: ProfilesPage,

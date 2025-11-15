@@ -1,14 +1,7 @@
 <template>
-  <CalcLayout title="Basic Configuration Checks">
-    <template #info>
-      <AlertBox type="info">
-        <p class="font-semibold mb-2">First Boot Verification</p>
-        <p>
-          A selection of recommended configuration checks to do on the first boot of Klipper.
-        </p>
-      </AlertBox>
-    </template>
-
+  <CalcLayout 
+    title="Basic Configuration Checks"
+    description="A selection of recommended configuration checks to perform when first setting up Klipper. These steps ensure that your printer's basic hardware and software configurations are correct and safe.">
     <CalcCard>
       <div class="overflow-x-auto">
         <table class="min-w-full border border-gray-700">

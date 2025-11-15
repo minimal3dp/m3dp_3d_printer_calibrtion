@@ -1,5 +1,7 @@
 <template>
-  <CalcLayout title="Pressure Advance">
+  <CalcLayout 
+    title="Pressure Advance"
+    description="Pressure Advance compensates for the pressure that builds up in the extruder, reducing stringing and improving corner quality. Use one of the methods below to find your optimal PA value.">
     <CalcCard title="Klipper PA Tower Method">
       <p class="text-sm text-gray-400 mb-4">
         Reference: 
