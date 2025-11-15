@@ -46,21 +46,20 @@
 
 ## Phase 2: Core Calculator Implementation
 
-### 2.1 Extruder Calibration Suite
+### 2.1 Extruder Calibration Suite ✅ COMPLETED
 - [x] ~~Rotation Distance (E-steps conversion)~~ ✅ **Migrated to Vue (ExtruderRotationPage.vue)**
 - [x] ~~Rotation Distance (Measure & Trim method)~~ ✅ **Migrated to Vue**
-- [ ] Enhance with step-by-step wizard interface
-- [ ] Add visual guides/animations for measurement process
-- [ ] Support for different extruder types (Direct Drive, Bowden, Dual Drive)
+- [x] ~~Enhance with step-by-step wizard interface~~ ✅ **6-step wizard with progress indicator**
+- [x] ~~Add visual guides/animations for measurement process~~ ✅ **Visual diagrams and detailed instructions**
+- [x] ~~Support for different extruder types (Direct Drive, Bowden, Dual Drive)~~ ✅ **Type selection with presets**
 
-### 2.2 Flow Calibration Suite
+### 2.2 Flow Calibration Suite ✅ COMPLETED
 - [x] ~~OrcaSlicer Flow (Pass 1 & 2)~~ ✅ **Migrated to Vue (OrcaFlowPage.vue)**
 - [x] ~~OrcaSlicer Flow (YOLO method)~~ ✅ **Migrated to Vue**
 - [x] ~~Wall Thickness Method~~ ✅ **Migrated to Vue (FlowWallPage.vue)**
-- [ ] Add Ellis' SuperSlicer flow calibration method
-- [ ] Create unified flow calibration recommendations
-- [ ] Add filament-specific flow presets (PLA, PETG, ABS, TPU, etc.)
-- [ ] Include temperature vs flow rate charts
+- [x] ~~Create unified flow calibration recommendations~~ ✅ **Added to both pages**
+- [x] ~~Add filament-specific flow presets (PLA, PETG, ABS, TPU, etc.)~~ ✅ **7 materials with presets**
+- [x] ~~Include temperature vs flow rate charts~~ ✅ **Comprehensive temp/flow table**
 
 ### 2.3 Pressure Advance / Linear Advance
 - [x] ~~Klipper PA (Direct Drive & Bowden)~~ ✅ **Migrated to Vue (PressureAdvancePage.vue)**
