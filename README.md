@@ -52,29 +52,42 @@ npm run preview
 # Deploy dist/ folder to any static host
 ```
 
-### Legacy HTML Version
+### Legacy Versions
 
-The original standalone HTML version is still available:
-
-```bash
-# Open index.html directly in your browser
-open index.html  # macOS
-xdg-open index.html  # Linux
-# or double-click index.html in Windows
-```
+Legacy implementations have been archived and are available in the `archive/` folder:
+- `archive/legacy-html/` - Original standalone HTML versions
+- `archive/legacy-js/` - Modular JavaScript implementations  
+- `archive/legacy-hugo/` - Hugo-based static site
 
 Note: The Vue.js version is actively maintained and recommended for the best experience.
 
 ## 📚 Documentation
 
-- **[TODO.md](TODO.md)**: Comprehensive development roadmap and feature tracking
-- **Calibration Guides**: Each calculator includes inline instructions and references
-- **External References**:
-  - [Ellis3DP Print Tuning Guide](https://ellis3dp.com/Print-Tuning-Guide/)
-  - [OrcaSlicer Calibration Wiki](https://github.com/SoftFever/OrcaSlicer/wiki/Calibration)
-  - [TeachingTech Calibration](https://teachingtechyt.github.io/calibration.html)
+All comprehensive documentation is organized in the `docs/` folder:
 
-## 🧮 Available Calculators (16 Active)
+- **[TODO.md](TODO.md)**: Development roadmap and feature tracking
+- **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**: Production deployment guide (Vercel, Netlify, GitHub Pages)
+- **[docs/VUE_SETUP_COMPLETE.md](docs/VUE_SETUP_COMPLETE.md)**: Vue.js migration details
+- **[docs/MVP_COMPLETE.md](docs/MVP_COMPLETE.md)**: Milestone 1 achievement summary
+- **[docs/PROFILE_SYSTEM_COMPLETE.md](docs/PROFILE_SYSTEM_COMPLETE.md)**: User profile system documentation
+- **[docs/TEST_RESULTS.md](docs/TEST_RESULTS.md)**: Comprehensive test report (133 tests)
+- **[docs/MANUAL_TEST_CHECKLIST.md](docs/MANUAL_TEST_CHECKLIST.md)**: Step-by-step testing guide
+
+**Calibration Guides**: Each calculator includes inline instructions and references
+
+**External References**:
+- [Ellis3DP Print Tuning Guide](https://ellis3dp.com/Print-Tuning-Guide/)
+- [OrcaSlicer Calibration Wiki](https://github.com/SoftFever/OrcaSlicer/wiki/Calibration)
+- [TeachingTech Calibration](https://teachingtechyt.github.io/calibration.html)
+
+## 🧮 Available Calculators (17 Active)
+
+### Profile Management
+- ✅ **Printer & Filament Profiles** - Save and manage multiple printer/filament configurations
+  - Create printer profiles (Voron, Ender, Prusa, custom)
+  - Create filament profiles (PLA, PETG, ABS, TPU, etc.)
+  - Import/export profiles as JSON
+  - Set active profiles for quick reference
 
 ### Basic Setup
 - ✅ **Basic Configuration Checks** - Verify your printer.cfg settings
@@ -84,17 +97,32 @@ Note: The Vue.js version is actively maintained and recommended for the best exp
 - ✅ **Lead Screw Rotation Distance** - Z-axis calibration
 - ✅ **Belt Rotation Distance** - X/Y axis calibration  
 - ✅ **Extruder Rotation Distance** - E-steps calibration (2 methods)
+  - 6-step interactive wizard with visual guides
+  - Extruder type support (Direct Drive, Bowden, Dual Drive)
+  - Smart presets (BMG, Orbiter, Voron M4, etc.)
+  - Real-time accuracy calculator with feedback
 - ✅ **Probe XY Offset** - Nozzle to probe offset
 - ⏳ Skew Correction (Coming Soon)
 
 ### Extrusion & Flow
 - ✅ **Flow Calibration (Wall Method)** - Measure actual vs expected
+  - 7 material types with temp/flow presets (PLA, PETG, ABS, ASA, TPU, Nylon, PC)
+  - Temperature vs flow rate comprehensive table
+  - Flow difference calculator with color-coded feedback
+  - Best practices and troubleshooting guides
 - ✅ **Flow Calibration (OrcaSlicer)** - Pass 1, Pass 2, YOLO methods
+  - Method comparison (Pass 1&2 vs YOLO)
+  - Detailed step-by-step instructions
+  - Visual inspection tips and best practices
+  - Alternative methods documentation
 - ✅ **Max Volumetric Speed (OrcaSlicer)** - Flow rate testing
 - ✅ **Max Volumetric Speed (Ellis)** - Alternative method
 
 ### Motion Tuning
 - ✅ **Pressure Advance** - Klipper PA calculator with multiple methods
+  - Tower method (Direct Drive & Bowden)
+  - OrcaSlicer PA Tower integration
+  - Adaptive PA calculator
 - ✅ **Input Shaping** - Ringing tower method
 - ✅ **Max Print Speed** - Calculate theoretical max speeds
 
@@ -102,11 +130,13 @@ Note: The Vue.js version is actively maintained and recommended for the best exp
 - ✅ **Line Width Recommendations** - Optimal line widths for your nozzle
 - ✅ **Extrusion Rate Smoothing** - ERS calculator for Klipper
 
-### Coming Soon
-- ⏳ Temperature Towers
-- ⏳ Retraction Tuning
-- ⏳ Z-Offset Calibration
-- ⏳ First Layer Wizard
+### Coming Soon (Phase 2)
+- ⏳ Skew Correction (Section 2.9 - Hardware)
+- ⏳ Temperature Towers (TeachingTech & Ellis methods)
+- ⏳ Retraction Tuning (Tower calculator)
+- ⏳ Marlin Linear Advance (K-factor)
+- ⏳ CNC Kitchen Flow Rate Test
+- ⏳ Acceleration Tower Calculator
 
 ## 🛠️ Technology Stack
 
@@ -141,7 +171,7 @@ m3dp_3d_printer_calibrtion/
 ├── src/                           # Vue.js application source
 │   ├── main.ts                    # Application entry point
 │   ├── App.vue                    # Root component with routing
-│   ├── components/
+│   ├── components/                # Reusable components
 │   │   ├── Sidebar.vue            # Navigation sidebar
 │   │   ├── CalcLayout.vue         # Page layout wrapper
 │   │   ├── CalcCard.vue           # Section card component
@@ -149,35 +179,59 @@ m3dp_3d_printer_calibrtion/
 │   │   ├── CalcResult.vue         # Result display component
 │   │   ├── AlertBox.vue           # Alert/info boxes
 │   │   ├── CommandBlock.vue       # Code block with copy
-│   │   └── pages/                 # Calculator pages (16 pages)
+│   │   ├── PrinterFormDialog.vue  # Printer profile form
+│   │   ├── FilamentFormDialog.vue # Filament profile form
+│   │   └── pages/                 # Calculator pages (17 pages)
 │   │       ├── HomePage.vue
+│   │       ├── ProfilesPage.vue   # Profile management
 │   │       ├── BasicChecksPage.vue
-│   │       ├── RunCurrentPage.vue
-│   │       └── ...
-│   ├── utils/
-│   │   └── calculations.ts        # Pure calculation functions
+│   │       ├── ExtruderRotationPage.vue
+│   │       ├── FlowWallPage.vue
+│   │       ├── OrcaFlowPage.vue
+│   │       └── ... (14 more pages)
+│   ├── composables/
+│   │   └── usePersistedCalculator.ts  # Calculator state persistence
+│   ├── stores/
+│   │   ├── calculatorStore.ts     # Calculator state management
+│   │   └── profileStore.ts        # User profiles (printers/filaments)
 │   ├── types/
-│   │   └── calculator.ts          # TypeScript interfaces
+│   │   ├── calculator.ts          # TypeScript interfaces
+│   │   └── profiles.ts            # Profile type definitions
+│   ├── utils/
+│   │   └── calculations.ts        # Pure calculation functions (100+ functions)
 │   └── assets/
 │       └── styles/
-│           └── main.css            # Tailwind + custom styles
+│           └── main.css           # Tailwind + custom styles
 │
-├── public/                        # Static assets
+├── docs/                          # Documentation
+│   ├── DEPLOYMENT.md              # Production deployment guide
+│   ├── VUE_SETUP_COMPLETE.md     # Vue.js migration details
+│   ├── MVP_COMPLETE.md           # Milestone 1 summary
+│   ├── PROFILE_SYSTEM_COMPLETE.md # Profile system docs
+│   ├── EXTRUDER_CALIBRATION_ENHANCEMENT.md
+│   ├── TEST_RESULTS.md           # Test report (133 tests)
+│   └── MANUAL_TEST_CHECKLIST.md  # Testing guide
+│
+├── archive/                       # Legacy implementations
+│   ├── legacy-html/              # Original HTML versions
+│   ├── legacy-js/                # Modular JavaScript
+│   ├── legacy-hugo/              # Hugo static site
+│   └── unused-python/            # Python placeholder files
+│
+├── research/
+│   └── Klipper Calibrations.xlsx # Source spreadsheet
+│
+├── public/                        # Static assets (empty, ready for images)
 ├── dist/                          # Production build output
 │
 ├── package.json                   # Node.js dependencies
 ├── vite.config.ts                # Vite configuration
 ├── tsconfig.json                 # TypeScript configuration
 ├── tailwind.config.js            # Tailwind customization
+├── netlify.toml                  # Netlify deploy config
+├── vercel.json                   # Vercel deploy config
 ├── TODO.md                        # Development roadmap
-├── README.md                      # This file
-├── VUE_SETUP_COMPLETE.md         # Vue migration guide
-│
-├── index.html                     # Legacy standalone version
-├── js/                           # Legacy JavaScript (deprecated)
-├── klipper-calibration/          # Legacy Hugo site (deprecated)
-└── research/
-    └── Klipper Calibrations.xlsx  # Source spreadsheet
+└── README.md                      # This file
 ```
 
 ## 🎨 Features
@@ -244,4 +298,4 @@ This project builds upon the excellent work of:
 - Type-safe calculations with validation
 - Modern build pipeline for optimized production bundles
 
-See [TODO.md](TODO.md) for detailed roadmap and [VUE_SETUP_COMPLETE.md](VUE_SETUP_COMPLETE.md) for migration details.
+See [TODO.md](TODO.md) for detailed roadmap and [docs/VUE_SETUP_COMPLETE.md](docs/VUE_SETUP_COMPLETE.md) for migration details.
